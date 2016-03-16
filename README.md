@@ -1,4 +1,4 @@
-# yymmdd
+# yymmdd [![Build Status](https://travis-ci.org/veelenga/yymmdd.svg?branch=master)](https://travis-ci.org/veelenga/yymmdd)
 
 Simple DSL for working with dates.
 

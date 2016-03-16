@@ -12,16 +12,16 @@ module YYMMDD
   }
 
   {% for fmt in TIME_FORMATS.keys %}
-    def {{fmt.id}}(date = nil)
-      Date.new {{fmt}}, date
+    def {{fmt.id}}(time = nil : Time)
+      Date.new {{fmt}}, time
     end
   {% end %}
 
   class Date
 
     {% for fmt in TIME_FORMATS.keys %}
-      def {{fmt.id}}
-        process Date.new({{fmt}}), "."
+      def {{fmt.id}}(time = nil : Time)
+        process Date.new({{fmt}}, time), "."
       end
     {% end %}
 

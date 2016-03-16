@@ -53,6 +53,10 @@ describe YYMMDD do
     it "accepts Time object" do
       time = Time.new 2017, 1, 5
       (yyyy-mm-dd time).to_s.should eq "2017-01-05"
+      (yyyy time).to_s.should eq "2017"
+      (yyyy.m time).to_s.should eq "2017.1"
+      (yy/m time).to_s.should eq "17/1"
+      (d|m time).to_s.should eq "5|1"
     end
   end
 end
