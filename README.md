@@ -9,8 +9,23 @@ require "yymmdd"
 
 include YYMMDD
 
-p yyyy #=> 2016
-p yy   #=> 16
+p yyyy         # 2016
+p yy           # 16
+p y            # 16
+p mm           # 03
+p m            # 3
+p dd           # 16
+p d            # 16
+p yyyy.mm.dd   # 2016.03.16
+p yy-mm-d      # 16-03-16
+p d/m/y        # 16/3/16
+
+time = Time.new 2017, 1, 5
+p y/m/d time   # 17/1/5
+p yyyy-mm time # 2017-01
+
+# ...
+
 ```
 
 ## Installation

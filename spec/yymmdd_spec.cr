@@ -30,4 +30,29 @@ describe YYMMDD do
   it "defines #d method that formats day with one digit" do
     d.to_s.should eq Time.now.to_s("%-d")
   end
+
+  context "operators" do
+    it "is able to be used with '/'" do
+      (yyyy.mm.dd).to_s.should eq Time.now.to_s("%Y.%m.%d")
+    end
+
+    it "is able to be used with '/'" do
+      (yyyy/mm/dd).to_s.should eq Time.now.to_s("%Y/%m/%d")
+    end
+
+    it "is able to be used with '-'" do
+      (yyyy-mm-dd).to_s.should eq Time.now.to_s("%Y-%m-%d")
+    end
+
+    it "is able to be used with '|'" do
+      (yyyy|mm|dd).to_s.should eq Time.now.to_s("%Y|%m|%d")
+    end
+  end
+
+  context "arguments" do
+    it "accepts Time object" do
+      time = Time.new 2017, 1, 5
+      (yyyy-mm-dd time).to_s.should eq "2017-01-05"
+    end
+  end
 end
