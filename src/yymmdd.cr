@@ -12,7 +12,7 @@ module YYMMDD
   }
 
   {% for fmt in TIME_FORMATS.keys %}
-    def {{fmt.id}}(time = nil : Time)
+    def {{fmt.id}}(time : Time = nil)
       Date.new {{fmt}}, time
     end
   {% end %}
@@ -20,26 +20,26 @@ module YYMMDD
   class Date
 
     {% for fmt in TIME_FORMATS.keys %}
-      def {{fmt.id}}(time = nil : Time)
+      def {{fmt.id}}(time : Time = nil)
         process Date.new({{fmt}}, time), "."
       end
     {% end %}
 
-    getter format, time, parts
+    getter format, time
 
-    def initialize(@format, @time = nil)
+    def initialize(@format : String, @time : Time? = nil)
       @parts = [{ self, "" }]
     end
 
-    def /(part = nil : Date)
+    def /(part : Date = nil)
       process(part, "/")
     end
 
-    def -(part = nil : Date)
+    def -(part : Date = nil )
       process(part, "-")
     end
 
-    def |(part = nil : Date)
+    def |(part : Date = nil)
       process(part, "|")
     end
 
@@ -51,8 +51,12 @@ module YYMMDD
       format self, io
     end
 
+    protected def parts
+      @parts.not_nil!
+    end
+
     private def process(part, del)
-      @parts << { part, del }
+      parts << { part, del }
       self
     end
 
