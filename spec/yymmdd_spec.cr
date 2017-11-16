@@ -41,22 +41,22 @@ describe YYMMDD do
     end
 
     it "is able to be used with '-'" do
-      (yyyy-mm-dd).to_s.should eq Time.now.to_s("%Y-%m-%d")
+      (yyyy - mm - dd).to_s.should eq Time.now.to_s("%Y-%m-%d")
     end
 
     it "is able to be used with '|'" do
-      (yyyy|mm|dd).to_s.should eq Time.now.to_s("%Y|%m|%d")
+      (yyyy | mm | dd).to_s.should eq Time.now.to_s("%Y|%m|%d")
     end
   end
 
   context "arguments" do
     it "accepts Time object" do
-      time = Time.new 2017, 1, 5
-      (yyyy-mm-dd time).to_s.should eq "2017-01-05"
+      time = Time.new 2_017, 1, 5
+      (yyyy - mm - dd time).to_s.should eq "2017-01-05"
       (yyyy time).to_s.should eq "2017"
       (yyyy.m time).to_s.should eq "2017.1"
       (yy/m time).to_s.should eq "17/1"
-      (d|m time).to_s.should eq "5|1"
+      (d | m time).to_s.should eq "5|1"
     end
   end
 end
